@@ -18,8 +18,8 @@ class _LifeMateAppState extends State<LifeMateApp> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const DashboardScreen(),
-    const FinanceScreen(),     // Use FinanceScreen here
-    const SettingsScreen(),    // Use SettingsScreen here
+    const FinanceScreen(),
+    const SettingsScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -30,19 +30,12 @@ class _LifeMateAppState extends State<LifeMateApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'LifeMate',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
-        useMaterial3: true,
-      ),
-      home: Scaffold(
-        body: _screens[_selectedIndex],
-        bottomNavigationBar: BottomNav(
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-        ),
+    // Just return Scaffold here, no MaterialApp!
+    return Scaffold(
+      body: _screens[_selectedIndex],
+      bottomNavigationBar: BottomNav(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }
