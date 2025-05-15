@@ -7,12 +7,13 @@ class MoneyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Money Tracker'),
+        title: const Text('Money Tracker 💸'),
+        backgroundColor: Colors.teal,
       ),
-      body: const Center(
+      body: Center(
         child: Text(
-          'Money Manager Coming Soon',
-          style: TextStyle(fontSize: 18),
+          'Money screen under construction 🚧',
+          style: TextStyle(fontSize: 20),
         ),
       ),
     );
