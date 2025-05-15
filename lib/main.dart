@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'features/welcome/welcome_screen.dart'; // adjust path as needed
-import 'app.dart'; // LifeMateApp widget
+import 'features/welcome/welcome_screen.dart';
+import 'features/home/home_screen.dart'; // ✅ import new screen
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const WelcomeScreen(),
-        '/home': (context) => const LifeMateApp(),
+        '/home': (context) => const HomeScreen(), // ✅ updated here
       },
     );
   }

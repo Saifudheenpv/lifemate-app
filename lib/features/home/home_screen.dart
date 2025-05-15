@@ -1,46 +1,93 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  int _currentIndex = 0;
-
-  final List<Widget> _pages = [
-    Center(child: Text('Dashboard', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Tasks', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Money', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Habits', style: TextStyle(fontSize: 24))),
-  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[50],
       appBar: AppBar(
-        title: const Text('LifeMate'),
         backgroundColor: Colors.teal,
+        elevation: 0,
+        title: const Text(
+          'LifeMate',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
       ),
-      body: _pages[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        selectedItemColor: Colors.teal,
-        unselectedItemColor: Colors.grey,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            const Text(
+              'Hey 👋 Welcome back!',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
+            ),
+            const SizedBox(height: 20),
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 2,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                children: const [
+                  HomeCard(title: 'Tasks', icon: Icons.check_circle, color: Colors.blue),
+                  HomeCard(title: 'Money', icon: Icons.attach_money, color: Colors.green),
+                  HomeCard(title: 'Habits', icon: Icons.auto_graph, color: Colors.orange),
+                  HomeCard(title: 'AI Assistant', icon: Icons.smart_toy, color: Colors.purple),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class HomeCard extends StatelessWidget {
+  final String title;
+  final IconData icon;
+  final Color color;
+
+  const HomeCard({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: InkWell(
+        onTap: () {
+          // TODO: Navigate to respective screens
         },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.check_circle), label: 'Tasks'),
-          BottomNavigationBarItem(icon: Icon(Icons.attach_money), label: 'Money'),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Habits'),
-        ],
+        borderRadius: BorderRadius.circular(16),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, size: 40, color: color),
+              const SizedBox(height: 10),
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
