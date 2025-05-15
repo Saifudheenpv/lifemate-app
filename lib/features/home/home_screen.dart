@@ -68,6 +68,20 @@ class HomeCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: InkWell(
         onTap: () {
+          switch (title) {
+    case 'Tasks':
+      Navigator.pushNamed(context, '/tasks');
+      break;
+    case 'Money':
+      Navigator.pushNamed(context, '/money');
+      break;
+    case 'Habits':
+      Navigator.pushNamed(context, '/habits');
+      break;
+    case 'AI Assistant':
+      Navigator.pushNamed(context, '/ai');
+      break;
+  }
           // TODO: Navigate to respective screens
         },
         borderRadius: BorderRadius.circular(16),

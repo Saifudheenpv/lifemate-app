@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'features/welcome/welcome_screen.dart';
-import 'features/home/home_screen.dart'; // ✅ import new screen
+import 'package:lifemate_app/features/home/home_screen.dart';
+import 'package:lifemate_app/features/tasks/tasks_screen.dart';
+import 'package:lifemate_app/features/money/money_screen.dart';
+import 'package:lifemate_app/features/habits/habits_screen.dart';
+import 'package:lifemate_app/features/ai/ai_assistant_screen.dart';
+import 'package:lifemate_app/features/welcome/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +21,11 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const WelcomeScreen(),
-        '/home': (context) => const HomeScreen(), // ✅ updated here
+        '/home': (context) => const HomeScreen(),
+        '/tasks': (context) => const TasksScreen(),
+        '/money': (context) => const MoneyScreen(),
+        '/habits': (context) => const HabitsScreen(),
+        '/ai': (context) => const AIAssistantScreen(),
       },
     );
   }
